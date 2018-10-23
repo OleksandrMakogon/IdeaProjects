@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TotoService {
+
+
     public ArrayList<Round> roundList = new ArrayList<>();
 
     private static void accept(Round x) {

@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="891eccd5-caaf-4ebd-9e5c-768a4a46affe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/TotoApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/TotoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/UI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Bet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/BetType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/FootballSportEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Odd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Outcome.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/SportEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/TennisSportEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/domain/Wager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/buffer/CircularBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sports-betting-application/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sports-betting-application/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sports-betting-application/src/main/java/TotoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sports-betting-application/src/main/java/TotoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sports-betting-application/target/classes/TotoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../sports-betting-application/target/classes/TotoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/training/toto/service/TotoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/training/toto/service/TotoService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/training/target/" />
@@ -42,12 +30,12 @@
         <counts>
           <entry key="csv" value="6" />
           <entry key="dummy" value="7" />
-          <entry key="java" value="3635" />
+          <entry key="java" value="3637" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3635" />
+          <entry key="JAVA" value="3637" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
@@ -93,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/training/toto/service/TotoService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="54" lean-forward="true" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+            <state relative-caret-position="119">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#456#457#0" expanded="true" />
@@ -195,6 +183,7 @@
         <option value="$PROJECT_DIR$/training/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/epam/training/toto/domain/Outcome.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/training/toto/service/TotoService.java" />
       </list>
     </option>
   </component>
@@ -503,8 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/training/toto/service/TotoService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="54" lean-forward="true" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+        <state relative-caret-position="119">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#456#457#0" expanded="true" />

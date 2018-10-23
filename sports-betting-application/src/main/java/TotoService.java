@@ -1,10 +1,9 @@
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import domain.*;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class TotoService {
 
@@ -105,9 +104,7 @@ public class TotoService {
 
         //All bets
         List<Bet> bets = new ArrayList<>();
-        bets.add(winnerManUtdChelsea);
-        bets.add(goalsManUtdChelsea);
-        bets.add(scoreAzar);
+        Collections.addAll(bets, winnerManUtdChelsea, goalsManUtdChelsea, scoreAzar );
         return bets;
     }
 
