@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Round {
     private String round;
@@ -13,7 +14,7 @@ public class Round {
     public String week;
     public String roundNumber;
     public LocalDate date;
-    public ArrayList<Hit> hits = new ArrayList<>();
+    public List<Hit> hits = new ArrayList<>();
 
     @Override
     public String toString(){

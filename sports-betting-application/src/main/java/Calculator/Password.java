@@ -2,7 +2,7 @@ package Calculator;
 
 class Password {
     private String expected;
-    private Boolean isFound;
+    private volatile boolean isFound;
 
     public Password(String expected) {
         this.expected = expected;
@@ -21,7 +21,7 @@ class Password {
             //System.out.println("Already found.");
         }
     }
-    public synchronized Boolean getIsFound(){
+    public synchronized boolean getIsFound(){
         return this.isFound;
     }
 }

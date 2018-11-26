@@ -8,12 +8,14 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TotoService {
 
+    //business logic should be in service, domain class should not contain logic
 
-    public ArrayList<Round> roundList = new ArrayList<>();
+    public List<Round> roundList = new ArrayList<>();
 
     private static void accept(Round x) {
         System.out.println(x.getRoundDistribution());

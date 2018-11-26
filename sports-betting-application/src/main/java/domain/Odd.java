@@ -1,7 +1,7 @@
 package domain;
 
 import java.time.LocalDate;
-
+//lombok to try
 public class Odd {
     public Outcome outcome;
     public LocalDate validFrom;

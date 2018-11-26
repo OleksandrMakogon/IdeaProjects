@@ -16,4 +16,5 @@ public class FootballSportEvent extends SportEvent {
     void setType() {
         type = "Football event";
     }
+
 }

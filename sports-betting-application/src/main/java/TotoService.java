@@ -49,13 +49,18 @@ public class TotoService {
     }
 
     public List<Bet> createData(){
-        FootballSportEvent fManUtdChelsea = new FootballSportEvent("ManUtd - Chelsea",
-                LocalDate.of(2018, 10, 20),
-                LocalDate.of(2018, 10, 21));
+        //FootballSportEvent fManUtdChelsea = new FootballSportEvent("ManUtd - Chelsea",
+         //       LocalDate.of(2018, 10, 20),
+         //       LocalDate.of(2018, 10, 21));
 
-        TennisSportEvent tFedererNadal = new TennisSportEvent("Federer - Nadal",
-                LocalDate.of(2018, 10, 20),
-                LocalDate.of(2018, 10, 21));
+        //Factory usage
+        SportEvent fManUtdChelsea = new FootbalFact().createEvent("ManUtd - Chelsea",
+                      LocalDate.of(2018, 10, 20),
+                      LocalDate.of(2018, 10, 21));
+
+        //TennisSportEvent tFedererNadal = new TennisSportEvent("Federer - Nadal",
+        //        LocalDate.of(2018, 10, 20),
+        //        LocalDate.of(2018, 10, 21));
 
         //create Bets
         Bet winnerManUtdChelsea = new Bet(fManUtdChelsea, BetType.Winner, "Winner");
