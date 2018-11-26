@@ -55,6 +55,6 @@ public final class Pancake {
 
     @Override
     public int hashCode() {
-        return 1;
+        return (int)Math.round(this.diameter / MIN_DIFF);
     }
 }
