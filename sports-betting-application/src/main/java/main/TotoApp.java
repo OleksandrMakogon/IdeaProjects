@@ -1,7 +1,10 @@
+package main;
+
 import domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TotoApp {
     public static void main(String[] args) {
@@ -62,7 +65,7 @@ public class TotoApp {
 
         //Print wagers
         //for(Wager wager: wagers){System.out.println(wager.toString());}
-
+        totoService.setRandom(new Random());
         List<Result> results = totoService.getResults(bets);
         totoService.calculateBalance(wagers, results);
         System.out.println(player.toString());

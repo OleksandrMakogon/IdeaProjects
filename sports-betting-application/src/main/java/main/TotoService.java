@@ -1,20 +1,25 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import domain.*;
+package main;
 
-import java.lang.reflect.Array;
+import domain.*;
 import java.time.LocalDate;
 import java.util.*;
 
 public class TotoService {
 
+    private Random random;
+
+    public void setRandom(Random random){
+        this.random = new Random();
+    }
 
     public List<Result> getResults(List<Bet> bets) {
 
+        if (bets == null) {throw new IllegalArgumentException();}
         //Generate results
         List<Result> results = new ArrayList<>();
         for (Bet bet : bets) {
-            Random random = new Random();
             int pos = random.nextInt(bet.outcomes.size());
+            System.out.println("Index = " + pos);
             results.add(new Result(bet.outcomes.get(pos), bet.sportEvent, bet.description));
         }
         for (Result result : results) {
@@ -24,6 +29,8 @@ public class TotoService {
     }
 
     public void calculateBalance(List<Wager> wagers, List<Result> results) {
+        if (wagers == null) {throw new IllegalArgumentException();}
+        if (results == null) {throw new IllegalArgumentException();}
         for (Wager wager : wagers) {
             for (Result result : results) {
                 if (wager.odd.outcome.equals(result.outcome)) {
@@ -40,6 +47,7 @@ public class TotoService {
         return new Wager(player, odd, amount);
     }
     public Boolean checkBalance(Player player, Double amount){
+        if (player == null){throw new IllegalArgumentException();}
         if (amount > player.balance) {
             return false;
         }
