@@ -1,2 +1,1 @@
-# toto-application
-Task 1
+# projects for java program
