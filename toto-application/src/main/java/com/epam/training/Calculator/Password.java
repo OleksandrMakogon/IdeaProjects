@@ -1,4 +1,4 @@
-package Calculator;
+package com.epam.training.Calculator;
 
 class Password {
     private String expected;
@@ -16,9 +16,6 @@ class Password {
                 this.isFound = true;
                 System.out.println("Password is found: " + originalPassword);
             }
-        }else
-        {
-            //System.out.println("Already found.");
         }
     }
     public synchronized boolean getIsFound(){

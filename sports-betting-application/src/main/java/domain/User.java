@@ -1,8 +1,10 @@
 package domain;
 
-public abstract class User {
+abstract class User {
 
     public String name;
     public String password;
     public Boolean enabled;
+
+    abstract void say();
 }

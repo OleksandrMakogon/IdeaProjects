@@ -1,4 +1,4 @@
-package Calculator;
+package com.epam.training.Calculator;
 
 import java.util.List;
 
@@ -16,7 +16,6 @@ public class FindPasswordTask implements Runnable    {
     public FindPasswordTask(HashCalculator calculator, Password password, List<String> valueIn, String base) {
         this.valueIn = valueIn;
         this.calculator = calculator;
-        this.start = start;
         this.password = password;
         this.base = base;
     }

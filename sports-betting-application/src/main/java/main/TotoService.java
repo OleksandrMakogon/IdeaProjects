@@ -1,20 +1,24 @@
 package main;
 
+import com.google.common.base.Preconditions;
 import domain.*;
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.util.*;
 
-public class TotoService {
+public class TotoService implements BetService{
 
     private Random random;
 
     public void setRandom(Random random){
-        this.random = new Random();
+        this.random = random;
     }
 
+    @NotNull
     public List<Result> getResults(List<Bet> bets) {
 
-        if (bets == null) {throw new IllegalArgumentException();}
+        Preconditions.checkNotNull(bets);
         //Generate results
         List<Result> results = new ArrayList<>();
         for (Bet bet : bets) {
@@ -28,47 +32,59 @@ public class TotoService {
         return results;
     }
 
+    /**Balance calculation.
+     * @param wagers wagers
+     * @param results res
+     */
     public void calculateBalance(List<Wager> wagers, List<Result> results) {
-        if (wagers == null) {throw new IllegalArgumentException();}
-        if (results == null) {throw new IllegalArgumentException();}
+        Preconditions.checkNotNull(wagers);
+        Preconditions.checkNotNull(results);
+        //size
         for (Wager wager : wagers) {
             for (Result result : results) {
-                if (wager.odd.outcome.equals(result.outcome)) {
-                    Double prize = wager.odd.oddValue * wager.amount;
+                if (wager.odd.getOutcome().equals(result.outcome)) {
+                    Double prize = wager.odd.getOddValue() * wager.amount;
                     System.out.println("Wager has played. " + wager.toString() + ". Prize: " + prize + " " + wager.currency);
-                    wager.player.balance = wager.player.balance + prize;
+                    wager.player.setBalance(wager.player.getBalance() + prize);
                     break;
                 }
             }
         }
     }
     public Wager createWager(Player player, Double amount, Odd odd){
-        player.balance = player.balance - amount;
+        player.setBalance(player.getBalance() - amount);
         return new Wager(player, odd, amount);
     }
-    public Boolean checkBalance(Player player, Double amount){
-        if (player == null){throw new IllegalArgumentException();}
-        if (amount > player.balance) {
-            return false;
-        }
-        else {
-            return true;
-            }
-    }
 
-    public List<Bet> createData(){
-        //FootballSportEvent fManUtdChelsea = new FootballSportEvent("ManUtd - Chelsea",
-         //       LocalDate.of(2018, 10, 20),
-         //       LocalDate.of(2018, 10, 21));
-
+    public List<Bet> createTestData() {
         //Factory usage
         SportEvent fManUtdChelsea = new FootbalFact().createEvent("ManUtd - Chelsea",
-                      LocalDate.of(2018, 10, 20),
-                      LocalDate.of(2018, 10, 21));
+                LocalDate.of(2018, 10, 20),
+                LocalDate.of(2018, 10, 21));
+        Bet winnerManUtdChelsea = new Bet(fManUtdChelsea, BetType.Winner, "Winner");
+        //create Outcomes and Odds for winner MU-Chelsea
+        Outcome manUntWinner = new Outcome("ManUnt", winnerManUtdChelsea);
+        Odd manUntWinnerOdd = new Odd(manUntWinner, LocalDate.now(), LocalDate.now(), 1.9);
+        manUntWinner.odds.add(manUntWinnerOdd);
+        Outcome chelseaWinner = new Outcome("Chelsea", winnerManUtdChelsea);
+        Odd chelseaWinnerOdd = new Odd(chelseaWinner, LocalDate.now(), LocalDate.now(), 2.0);
+        chelseaWinner.odds.add(chelseaWinnerOdd);
+        //Fill bets with outcomes
+        winnerManUtdChelsea.outcomes.add(manUntWinner);
+        winnerManUtdChelsea.outcomes.add(chelseaWinner);
 
-        //TennisSportEvent tFedererNadal = new TennisSportEvent("Federer - Nadal",
-        //        LocalDate.of(2018, 10, 20),
-        //        LocalDate.of(2018, 10, 21));
+        //All bets
+        List<Bet> bets = new ArrayList<>();
+        bets.add(winnerManUtdChelsea);
+        return bets;
+    }
+
+
+    public List<Bet> createData(){
+        //Factory usage
+        SportEvent fManUtdChelsea = new FootbalFact().createEvent("ManUtd - Chelsea",
+                LocalDate.of(2018, 10, 20),
+                LocalDate.of(2018, 10, 21));
 
         //create Bets
         Bet winnerManUtdChelsea = new Bet(fManUtdChelsea, BetType.Winner, "Winner");
@@ -117,7 +133,7 @@ public class TotoService {
 
         //All bets
         List<Bet> bets = new ArrayList<>();
-        Collections.addAll(bets, winnerManUtdChelsea, goalsManUtdChelsea, scoreAzar );
+        Collections.addAll(bets, winnerManUtdChelsea, goalsManUtdChelsea, scoreAzar);
         return bets;
     }
 
@@ -127,8 +143,8 @@ public class TotoService {
         int count = 1;
         for (Bet bet : bets) {
             for (Outcome outcome : bet.outcomes) {
-                System.out.println(count + ": Bet on " + bet.sportEvent.title + "; " + bet.description + " will be " +
-                        outcome.value + ". The odd is: " + outcome.odds.get(0).oddValue);
+                System.out.println(count + ": Bet on " + bet.sportEvent.title + "; " + bet.description + " will be "
+                        + outcome.value + ". The odd is: " + outcome.odds.get(0).getOddValue());
                 count++;
             }
         }

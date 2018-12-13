@@ -1,5 +1,8 @@
 package com.epam.training.pancake;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public final class Pancake {
@@ -16,6 +19,7 @@ public final class Pancake {
         this.diameter = diameter;
     }
 
+    @org.jetbrains.annotations.Contract(pure = true)
     public String getName() {
         return name;
     }
@@ -24,16 +28,14 @@ public final class Pancake {
         return diameter;
     }
 
+    @NotNull
+    @Contract(pure = true)
     @Override
     public String toString() {
         return name + "; " + diameter;
     }
 
-    // @Override
-    //public int hashCode(){
-    //    return (int)diameter;
-    //}
-
+    @Contract(value = "null -> false", pure = true)
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -55,6 +57,6 @@ public final class Pancake {
 
     @Override
     public int hashCode() {
-        return (int)Math.round(this.diameter / MIN_DIFF);
+        return Objects.hash(name, Math.round(diameter/MIN_DIFF));
     }
 }

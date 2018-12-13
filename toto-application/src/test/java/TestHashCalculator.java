@@ -1,4 +1,4 @@
-import Calculator.HashCalculator;
+import com.epam.training.Calculator.HashCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

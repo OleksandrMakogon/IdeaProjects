@@ -2,7 +2,7 @@ package domain;
 
 import java.time.LocalDate;
 
-public class TennisSportEvent extends SportEvent {
+class TennisSportEvent extends SportEvent {
 
     public TennisSportEvent(String title, LocalDate startDate, LocalDate endDate) {
         this.endDate = endDate;

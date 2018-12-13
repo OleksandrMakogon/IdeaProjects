@@ -9,7 +9,7 @@ public class Bet {
     public List<Outcome> outcomes = new ArrayList<>();
     public BetType betType;
 
-    public Bet(SportEvent sportEvent, BetType betType, String description) {
+    public Bet(SportEvent sportEvent, BetType betType, String description) {//NOPMD
         this.sportEvent = sportEvent;
         this.description = description;
         this.betType = betType;

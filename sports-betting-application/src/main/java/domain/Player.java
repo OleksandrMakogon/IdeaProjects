@@ -1,10 +1,15 @@
 package domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Player extends User {
 
-    public String account;
-    public Double balance;
-    public Currency currency;
+    private String account;
+    private Double balance;
+    private Currency currency;
 
     public Player(String name, String account, Double balance, Currency currency, Boolean enabled) {
         this.account = account;
@@ -12,11 +17,15 @@ public class Player extends User {
         this.currency = currency;
         this.name = name;
         this.enabled = enabled;
-
     }
 
     @Override
     public String toString() {
         return "Player: " + name + ". Balance: " + balance + " " + currency;
+    }
+
+    @Override
+    public void say(){
+        System.out.println("I'm player. My name is " + name);
     }
 }

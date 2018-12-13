@@ -1,4 +1,4 @@
-//package buffer;
+//package com.epam.training.buffer;
 //
 //import java.lang.reflect.Array;
 //import java.sql.SQLOutput;

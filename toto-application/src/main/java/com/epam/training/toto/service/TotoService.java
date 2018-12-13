@@ -2,6 +2,7 @@ package com.epam.training.toto.service;
 
 import com.epam.training.toto.domain.Hit;
 import com.epam.training.toto.domain.Round;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,7 +18,10 @@ public class TotoService {
 
     public List<Round> roundList = new ArrayList<>();
 
-    private static void accept(Round x) {
+    /**
+     * @param x
+     */
+    private static void accept(@NotNull Round x) {
         System.out.println(x.getRoundDistribution());
     }
 

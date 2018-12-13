@@ -1,12 +1,14 @@
 package main;
 
 import domain.*;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
-public class TotoApp {
+public final class TotoApp {
+    private TotoApp(){
+
+    }
     public static void main(String[] args) {
 
         TotoService totoService = new TotoService();
@@ -31,29 +33,29 @@ public class TotoApp {
         System.out.println("Please choose an outcome to bet on! (choose a number or press q for quit)");
         totoService.printBets(bets);
         String input = ui.getStringFromConsole();
-        while (!input.equals("q")){
+        while (!"q".equals(input)){
             Odd odd = null;
-            Integer Count = 0;
+            Integer count = 0;
             for(Bet bet: bets){
-                if ((Integer.valueOf(input) - Count) > bet.outcomes.size()){
-                    Count = Count + bet.outcomes.size();
-                }
-                else{
-                    odd = bet.outcomes.get(Integer.valueOf(input) - Count - 1).odds.get(0);
+                if ((Integer.parseInt(input) - count) <= bet.outcomes.size()){
+                    odd = bet.outcomes.get(Integer.parseInt(input) - count - 1).odds.get(0);
                     break;
                 }
+                count = count + bet.outcomes.size();
             }
             System.out.println("How much do you want to bet on it?");
             Double amount = Double.valueOf(ui.getStringFromConsole());
-            while (!totoService.checkBalance(player, amount)) {
-                System.out.println("You don't have enough money, your balance is " + player.balance + " " + player.currency);
+            while (amount > player.getBalance()) {
+                System.out.println("You don't have enough money, your balance is " + player.getBalance() + " " + player.getCurrency());
                 System.out.println("How much do you want to bet on it?");
                 amount = Double.valueOf(ui.getStringFromConsole());
             }
             wagers.add(totoService.createWager(player, amount, odd));
-            for(Wager wager: wagers){System.out.println(wager.toString());}
-            System.out.println("Your new balance is " + player.balance + " " + player.currency);
-            if (player.balance.equals(0.0)){
+            for(Wager wager: wagers){
+                System.out.println(wager.toString());
+            }
+            System.out.println("Your new balance is " + player.getBalance() + " " + player.getCurrency());
+            if (player.getBalance().equals(0.0)){
                 System.out.println("No more wagers due to empty balance.");
                 ui.getStringFromConsole();
                 break;

@@ -1,12 +1,13 @@
-package Calculator;
+package com.epam.training.Calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PasswordTestSimple{
-    //find password up to 5 letter (lower case) with using simple consecutive algorithm
+public class PasswordTestConcurrency {
+    //find password up to 5 letter (lower case) with using concurrency
     public static void main(String[] arg) {
         List<String> list = defineChars();
         HashCalculator hashCalc = new HashCalculator();
@@ -15,34 +16,34 @@ public class PasswordTestSimple{
 
         long d1 = System.currentTimeMillis();
         int threadCount = 0;
-        String currValue;
         ExecutorService exec = Executors.newCachedThreadPool();
         for (String letter: list){
             for(String letter1: list){
-                if (letter != "" && letter1 == "") {
+                if (!Objects.equals(letter, "") && Objects.equals(letter1, ""))
+                {
                     continue;
                 }
+
                 for(String letter2: list) {
-                    if (letter1 != "" && letter2 == ""){
+                    if (!Objects.equals(letter1, "") && Objects.equals(letter2, "")){
                         continue;
                     }
                     for(String letter3: list) {
-                        if (letter2 != "" && letter3 == "") {
+                        if (!Objects.equals(letter2, "") && Objects.equals(letter3, "")) {
                             continue;
                         }
-                        for (String letter4: list.subList(0, list.size()-1)) {
+
+                            String base = letter + letter1 + letter2 + letter3;
+                            exec.execute(new FindPasswordTask(hashCalc, password, list.subList(0, list.size() - 1), base));
                             threadCount++;
-                            currValue = letter + letter1 + letter2 + letter3 + letter4;
-                            password.stop(hashCalc.hash(currValue), currValue);
-                            if (password.getIsFound()){break;}
-                        }
+
                     }
                 }
             }
         }
         exec.shutdown();
         long d2 = System.currentTimeMillis();
-        System.out.println("Time to found: " + (d2 - d1) + " ms. Attempt count: " + threadCount);
+        System.out.println("Time to found: " + (d2 - d1) + " ms. Threads count: " + threadCount);
     }
 
     public static List<String> defineChars(){
@@ -55,5 +56,4 @@ public class PasswordTestSimple{
     }
 
 }
-
 

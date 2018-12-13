@@ -16,14 +16,14 @@ public class Wager {
         this.player = player;
         this.odd = odd;
         this.amount = amount;
-        this.currency = player.currency;
+        this.currency = player.getCurrency();
         this.isProcessed = false;
     }
 
     @Override
     public String toString() {
-        return "Wager for '" + odd.outcome.bet.sportEvent.title + "'. " + odd.outcome.bet.description +
-                " will be " + odd.outcome.value + ". Amount: " + amount + " " + currency + ". Odd is " + odd.oddValue + ". Player: " + player.name;
+        return "Wager for '" + odd.getOutcome().bet.sportEvent.title + "'. " + odd.getOutcome().bet.description +
+                " will be " + odd.getOutcome().value + ". Amount: " + amount + " " + currency + ". Odd is " + odd.getOddValue() + ". Player: " + player.name;
     }
 }
 

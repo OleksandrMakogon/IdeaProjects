@@ -1,12 +1,15 @@
 package domain;
 
+import lombok.Getter;
+
 import java.time.LocalDate;
-//lombok to try
+
+@Getter
 public class Odd {
-    public Outcome outcome;
-    public LocalDate validFrom;
-    public LocalDate validTo;
-    public Double oddValue;
+    private final Outcome outcome;
+    private LocalDate validFrom;
+    private LocalDate validTo;
+    private Double oddValue;
 
     public Odd(Outcome outcome, LocalDate validFrom, LocalDate validTo, Double oddValue) {
         this.outcome = outcome;
