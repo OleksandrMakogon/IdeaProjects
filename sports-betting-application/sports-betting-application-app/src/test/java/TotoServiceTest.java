@@ -81,7 +81,7 @@ class TotoServiceTest {
     void createData_ReturnListBets(){
         List<Bet> betsList = totoService.createTestData();
         for (Bet bet: betsList){
-            Assertions.assertEquals(bet.getClass(), Bet.class);
+            Assertions.assertEquals(bet.getClass(), Outcome.class);
         }
     }
 
