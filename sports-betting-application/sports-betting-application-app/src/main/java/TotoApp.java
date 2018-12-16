@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public final class TotoApp {
-    private TotoApp(){
-
-    }
+    private TotoApp(){}
     public static void main(String[] args) {
 
         TotoService totoService = new TotoService();
@@ -19,7 +17,7 @@ public final class TotoApp {
 
         System.out.println("Hi, what is your name?");
         String name = ui.getStringFromConsole();
-        System.out.println("How much money do you have (more than 0)?");
+        System.out.println("How much money do you have (please, enter > 0)?");
         //Double balance = ui.getDoubleFromConsole();
         String balance = ui.getStringFromConsole();
         System.out.println("What is your currency? (EUR or USD)");
