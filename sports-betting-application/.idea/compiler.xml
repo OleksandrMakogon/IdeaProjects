@@ -6,7 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sports-betting-application" />
+        <module name="sports-betting-application-app" />
+        <module name="sports-betting-application-domain" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,8 +1,9 @@
-package main;
-
 import domain.*;
-import java.util.List;
+import main.TotoService;
+import main.UI;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public final class TotoApp {

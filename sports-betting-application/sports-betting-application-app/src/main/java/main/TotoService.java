@@ -2,7 +2,6 @@ package main;
 
 import com.google.common.base.Preconditions;
 import domain.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -15,9 +14,7 @@ public class TotoService implements BetService{
         this.random = random;
     }
 
-    @NotNull
     public List<Result> getResults(List<Bet> bets) {
-
         Preconditions.checkNotNull(bets);
         //Generate results
         List<Result> results = new ArrayList<>();

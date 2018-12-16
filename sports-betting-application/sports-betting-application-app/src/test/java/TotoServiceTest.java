@@ -1,12 +1,15 @@
-package main;
-
 import domain.*;
-import org.junit.jupiter.api.*;
+import main.TotoService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.*;
 
 import java.util.List;
 import java.util.Random;
@@ -38,12 +41,12 @@ class TotoServiceTest {
         totoService = null;
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void getResults_ThrowsException() {
         Assertions.assertThrows(NullPointerException.class, ()-> totoService.getResults(null));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void getResults_FillBetWithResults() {
         totoService.setRandom(random);
         List<Result> res = totoService.getResults(bets);
@@ -52,28 +55,28 @@ class TotoServiceTest {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void getResults_FillBetWithFirstOutcome() {
         totoService.setRandom(random);
-        when(random.nextInt(anyInt())).thenReturn(0);
+        Mockito.when(random.nextInt(Matchers.anyInt())).thenReturn(0);
         List<Result> res = totoService.getResults(bets);
         for (Result result: res) {
             System.out.println(result.outcome.value);
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void calculateBalance_ThrowsException_ResultsNull() {
         Assertions.assertThrows(NullPointerException.class, () -> totoService.calculateBalance(null, null));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void createWager_ReturnsWager(){
        Wager wager = totoService.createWager(player, 20.0, bets.get(0).outcomes.get(0).odds.get(0));
        Assertions.assertEquals(Wager.class, wager.getClass());
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void createData_ReturnListBets(){
         List<Bet> betsList = totoService.createTestData();
         for (Bet bet: betsList){
