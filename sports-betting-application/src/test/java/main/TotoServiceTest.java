@@ -36,6 +36,7 @@ class TotoServiceTest {
     @AfterAll
     public static void teardown(){
         totoService = null;
+        
     }
 
     @Test
