@@ -1,30 +1,40 @@
-package main;
+package totoBetApp;
 
-import com.google.common.base.Preconditions;
 import domain.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
+@Service
+//@Component
 public class TotoService implements BetService{
 
     private Random random;
+
+    public static final Logger LOGGER =
+            LoggerFactory.getLogger(TotoService.class);
 
     public void setRandom(Random random){
         this.random = random;
     }
 
     public List<Result> getResults(List<Bet> bets) {
-        Preconditions.checkNotNull(bets);
+        //Preconditions.checkNotNull(bets);
         //Generate results
         List<Result> results = new ArrayList<>();
         for (Bet bet : bets) {
             int pos = random.nextInt(bet.outcomes.size());
-            System.out.println("Index = " + pos);
+            //System.out.println("Index = " + pos);
             results.add(new Result(bet.outcomes.get(pos), bet.sportEvent, bet.description));
         }
         for (Result result : results) {
-            System.out.println("Result for '" + result.event.title + "' " + result.event.getType() + ". " + result.description + ": " + result.outcome.value);
+            LOGGER.debug("Result for '" + result.event.title + "' " + result.event.getType() + ". " + result.description + ": " + result.outcome.value);
         }
         return results;
     }
@@ -34,14 +44,15 @@ public class TotoService implements BetService{
      * @param results res
      */
     public void calculateBalance(List<Wager> wagers, List<Result> results) {
-        Preconditions.checkNotNull(wagers);
-        Preconditions.checkNotNull(results);
+        //Preconditions.checkNotNull(wagers);
+        //Preconditions.checkNotNull(results);
         //size
+       // System.out.println("****************Method name (my):");
         for (Wager wager : wagers) {
             for (Result result : results) {
                 if (wager.odd.getOutcome().equals(result.outcome)) {
                     Double prize = wager.odd.getOddValue() * wager.amount;
-                    System.out.println("Wager has played. " + wager.toString() + ". Prize: " + prize + " " + wager.currency);
+                    LOGGER.debug("Wager has played. " + wager.toString() + ". Prize: " + prize + " " + wager.currency);
                     wager.player.setBalance(wager.player.getBalance() + prize);
                     break;
                 }
@@ -75,7 +86,6 @@ public class TotoService implements BetService{
         bets.add(winnerManUtdChelsea);
         return bets;
     }
-
 
     public List<Bet> createData(){
         //Factory usage
@@ -140,11 +150,12 @@ public class TotoService implements BetService{
         int count = 1;
         for (Bet bet : bets) {
             for (Outcome outcome : bet.outcomes) {
-                System.out.println(count + ": Bet on " + bet.sportEvent.title + "; " + bet.description + " will be "
+                LOGGER.debug(count + ": Bet on " + bet.sportEvent.title + "; " + bet.description + " will be "
                         + outcome.value + ". The odd is: " + outcome.odds.get(0).getOddValue());
                 count++;
             }
         }
+        //throw new DataBaseException("DB Fail!!!");
     }
 }
 

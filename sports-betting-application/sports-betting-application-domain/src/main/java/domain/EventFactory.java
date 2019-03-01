@@ -1,8 +1,8 @@
 package domain;
 
-import java.time.LocalDate;
+    import java.time.LocalDate;
 
-abstract class EventFactory {
+    abstract class EventFactory {
 
-    public abstract SportEvent createEvent(String title, LocalDate startDate, LocalDate endDate);
-}
+        public abstract SportEvent createEvent(String title, LocalDate startDate, LocalDate endDate);
+    }
